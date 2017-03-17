@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="animals, cats, squirrels, badgers, goats, dog, funny, videos, feedback" />
+    <meta name="description" content="This web page allows the user to enter their name, email and provide feedback about the website." />
+    <style type="text/css">
+        legend {
+            float: left;
+            color: #0000fe;
+            font-style: italic;
+            font-size: small;
+        }
+    </style>
+    <title>Contact Us</title>
+    <link rel="stylesheet" type="text/css" href="groupstylesheet.css" />
+</head>
+
+<body>
+    <h1 style="text-align: center">Feedback</h1> 
+    <div id="menubar">
+        <div id="menu1" class="menu">Home &nbsp; &nbsp;<span class="whitepipe"> &nbsp; | </span>
+            <ul>
+                <li><a href="project_home_page.html">Home</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="menu2" class="menu">Animals &nbsp; &nbsp; &nbsp;<span class="whitepipe"> &nbsp; | </span>
+            <ul>
+                <li><a href="cats.html">Cats</a>
+                </li>
+                <li><a href="squirrel.html">Squirrels</a>
+                </li>
+                <li><a href="badger.html">Badgers</a>
+                </li>
+                <li><a href="goat.html">Goats</a>
+                </li>
+                <li><a href="dog.html">Dogs</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="menu3" class="menu">Contact Us
+            <ul>
+                <li><a href="feedback.html">Feedback</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <form method="post" action="mailto:katie.caballero2013@gmail.com">
+        <fieldset>
+            <legend>Tell us about yourself</legend>
+            <br/>
+            <p>First Name:
+                <input type="text" name="firstname" size="25" />&nbsp; &nbsp; Last Name:
+                <input type="text" name="lastname" size="40" />&nbsp; &nbsp; Email:
+                <input type="email" name="email" size="40" />
+            </p>
+            <p>Gender:<br />Male
+                <input type="radio" name="gender" />&nbsp; Female
+                <input type="radio" name="gender" />
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Interests</legend>
+            <br/>
+            <p>Which videos did you watch?:
+                <br/>
+                <input type="checkbox" name="category" />Cat &nbsp;
+                <input type="checkbox" name="category" />Squirrel &nbsp;
+                <input type="checkbox" name="category" />Badger &nbsp;
+                <input type="checkbox" name="category" />Goat &nbsp;
+                <input type="checkbox" name="category" />Dog
+            </p>
+            <p>Your favorite category:
+                <select name="animal">
+                    <option>Check one</option>
+                    <option>Cat</option>
+                    <option>Squirrel</option>
+                    <option>Badger</option>
+                    <option>Goat</option>
+                    <option>Dog</option>
+                </select>
+            </p>
+            <p>What other animals would you like to see?
+                <br/>
+                <textarea name="moreanimals" rows="3" cols="60"></textarea>
+            </p>
+        </fieldset>
+        <p>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </p>
+    </form>
+
+</body>
+
+</html>

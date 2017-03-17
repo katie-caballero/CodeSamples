@@ -1,0 +1,70 @@
+h1 {margin-top: 50px; font-size: 36pt;}
+
+body {background: #cccccc; font-family: arial, verdana, tahoma;}
+
+a {text-decoration: none; color: navy;}
+
+table 
+{
+    margin-top: 135px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: thick;
+    border-color: #888;
+}
+
+td 
+{
+    padding: 5px;
+    border-style: solid;
+    border-color: navy;
+}
+
+#menubar 
+{
+    background-color: #303032;
+    color: white;
+    height: 40px;
+}
+
+.menu ul 
+{
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    margin: 2px 5px 5px 0;
+    padding: 1em;
+    border-radius: 3px;
+}
+
+.menu
+{
+    float: left;
+    padding: 0.6em 3em 0.1em 0.5em;
+    cursor: default;
+}
+
+.menu ul li 
+{
+    display: block;
+    padding: 0.5em;
+    font-size: 95%;
+}
+
+div.menu:hover ul 
+{
+    margin: 0;
+    padding: 0.2em;
+    display: block;
+    background-color: white;
+    color: #303032;
+    font-size: 95%;
+}
+
+div.menu ul li:hover {background-color: #cccccc; font-size: 95%;}
+
+whitepipe {color: white;}
+
+iframe {border-width: 0}

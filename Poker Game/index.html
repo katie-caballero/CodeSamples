@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+	body {
+  background-color: #308b5a;
+  color: #fef72c;
+  font-family: Helvetica, sans-serif;
+  margin: 1em 2em;
+}
+
+h1 {
+  text-shadow: 1px 2px #444;
+}
+
+
+/* Cards */
+
+.card {
+  height: 125px;
+  width: 100px;
+}
+
+.card.pair0 {
+  border-top: 3px solid #f33;
+  padding: 0.25em 0 0.75em;
+}
+
+.card.pair1 {
+  border-top: 3px solid #33f;
+  padding: 0.25em 0 0.75em;
+}
+
+
+/* Hands */
+
+.hand {
+  box-shadow: 4px 4px 6px 4px #444;
+  margin: 4em 0;
+  padding: 1em;
+}
+
+.hand.winning {
+  background-color: #44C880;
+}
+
+.hand.winning h1:after {
+  content: " Wins!";
+}
+
+
+/* Button */
+
+.buttons {
+  text-align: center;
+}
+
+.buttons button {
+  background-color: #4b1124;
+  border: 4px double #cfb338;
+  box-shadow: 4px 4px 5px #333;
+  color: #eee;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0.5em 2em;
+}
+
+.buttons button:active {
+  position: relative;
+  top: 4px;
+  left: 4px;
+  box-shadow: none;
+}
+
+#tied {
+  display: none;
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+</style>
+</head>
+
+<section class="hand" id="Player1">
+  <h1>Player 1</h1>
+  <img id="card0"><img id="card1">
+  <img id="card2"><img id="card3"><img id="card4">
+</section>
+
+<section class="hand" id="Player2">
+  <h1>Player 2</h1>
+  <img id="card5"><img id="card6">
+  <img id="card7"><img id="card8"><img id="card9">
+</section>
+
+<section id="tied">
+  <h2>Players Tied!</h2>
+</section>
+
+<section class="buttons">
+  <button>Play Again</button>
+</section>
+
+
+</html>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+Poker = (function($) {
+
+  var cardBaseURL = "http://h3h.net/images/cards/{suit}_{card}.svg";
+  var suits = ['spade', 'heart', 'diamond', 'club'];
+  var cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+  var Player1Hand = [];
+  var Player2Hand = [];
+
+  // *-* public methods *-*
+
+  var init = function() {
+    $(".buttons button").on("click", eventPlayAgainClicked);
+  };
+
+  // *-* utility methods *-*
+
+  var makeHand = function() {
+    var cardSuit; //Randomly generated index of suit
+    var cardNum; //Randomly generated index of card 
+    var usedCards = []; //stored already generated cards 
+
+    //loop to create cards and add src and class
+    var i = 0;
+    while (i < 10) {
+      //randomly generate suit and card
+      cardSuit = Math.round(Math.random() * 3);
+      cardNum = Math.round(Math.random() * 12);
+
+      //check to see if card has already been generated so there are not duplicate cards
+      if ($.inArray(cardSuit + ' ' + cardNum, usedCards) == -1) {
+        usedCards.push(cardSuit + ' ' + cardNum);
+
+        //log values to console
+        console.log(cards[cardNum] + ' ' + suits[cardSuit]);
+
+        //if first 5 cards add to player1 hand else add to player2 hand
+        if (i < 5) {
+          Player1Hand.push(cards[cardNum]);
+        } else {
+          Player2Hand.push(cards[cardNum]);
+        }
+
+        //add images
+        var src = cardBaseURL.replace("{suit}", suits[cardSuit]);
+        src = src.replace("{card}", cards[cardNum]);
+        $('#card' + i).attr('src', src);
+        //add card class
+        $('#card' + i).addClass('card');
+
+        i++;
+      }
+    };
+  };
+
+  var checkForPairs = function() {
+    var Player1Pairs = 0; //index of first set of pairs
+    var Player2Pairs = 0; //index of second set of pairs
+    var pair1 = []; //array to hold values of first pair - used to make sure three of a kind is not given pair class
+    //check for pairs
+    for (var i = 0; i < Player1Hand.length; i++) {
+      for (var j = 0; j < Player1Hand.length; j++) {
+        if (i != j) {
+          if (Player1Hand[i] == Player1Hand[j]) {
+            if (pair1.length == 0) {
+              $('#card' + i).addClass('pair0');
+              $('#card' + j).addClass('pair0');
+              Player1Pairs++;
+              pair1 = [Player1Hand[i], Player1Hand[j]];
+            } else {
+              var pair2 = [Player1Hand[i], Player1Hand[j]];
+              if (pair1 != pair2) {
+                $('#card' + i).addClass('pair1');
+                $('#card' + j).addClass('pair1');
+                Player1Pairs++;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    pair1 = []; //clear array of first pair
+    for (var i = 0; i < Player2Hand.length; i++) {
+      for (var j = 0; j < Player2Hand.length; j++) {
+        if (i != j) {
+          if (Player2Hand[i] == Player2Hand[j]) {
+            if (pair1.length == 0) {
+              $('#card' + (i + 5)).addClass('pair0');
+              $('#card' + (j + 5)).addClass('pair0');
+              pair1 = [Player2Hand[i], Player2Hand[j]];
+              Player2Pairs++;
+            } else {
+              var pair2 = [Player2Hand[i], Player2Hand[j]];
+              if (pair1 != pair2) {
+                $('#card' + (i + 5)).addClass('pair1');
+                $('#card' + (j + 5)).addClass('pair1');
+                Player2Pairs++;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //add style or class for winner or tied
+    if (Player1Pairs == Player2Pairs) {
+      $('#tied').css('display', 'block');
+    } else if (Player1Pairs > Player2Pairs) {
+      $('#Player1').addClass('winning');
+    } else if (Player2Pairs != 0) {
+      $('#Player2').addClass("winning");
+    }
+
+  };
+
+  // *-* event methods *-*
+
+  var eventPlayAgainClicked = function() {
+    //Clear arrays
+    Player1Hand = [];
+    Player2Hand = [];
+    usedCards = [];
+
+    $('img').removeClass();
+    $('#Player1').removeClass("winning");
+    $('#Player2').removeClass("winning");
+    $('#tied').css('display', 'none');
+
+    makeHand();
+    checkForPairs();
+  };
+
+  // expose public methods
+  return {
+    init: init
+  };
+})(jQuery);
+
+$(document).ready(Poker.init);
+</script>

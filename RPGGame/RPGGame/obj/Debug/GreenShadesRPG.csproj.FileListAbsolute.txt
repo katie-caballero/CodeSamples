@@ -1,0 +1,7 @@
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\bin\Debug\GreenShadesRPG.exe.config
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\bin\Debug\GreenShadesRPG.exe
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\bin\Debug\GreenShadesRPG.pdb
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\obj\Debug\GreenShadesRPG.csprojResolveAssemblyReference.cache
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\obj\Debug\GreenShadesRPG.exe
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\obj\Debug\GreenShadesRPG.pdb
+C:\Users\kcaballero\Desktop\Class\GreenShadeRPG\GreenShadesRPG\GreenShadesRPG\bin\Debug\RPGGame.exe.config
