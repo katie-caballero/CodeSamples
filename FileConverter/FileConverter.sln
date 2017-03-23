@@ -10,11 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{032A1C
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleData", "SampleData", "{85C2FD8E-5035-4C9D-A081-558664F5EFFC}"
-	ProjectSection(SolutionItems) = preProject
-		SampleData\books.xml = SampleData\books.xml
-	EndProjectSection
-EndProject
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConverter", "FileConverter\FileConverter.csproj", "{2008DA79-F037-48D0-BF46-3A46E4D1F3CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertXMLJSON", "Converter\ConvertXMLJSON.csproj", "{6F044248-9A79-4864-8163-A1B18BCC5A16}"
