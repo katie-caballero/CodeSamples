@@ -25,16 +25,8 @@ namespace ConvertXMLJSON
 
             //convert xml to json
             string rawJsonText = JsonConvert.SerializeXmlNode(doc.DocumentElement, Formatting.Indented);
-
-            //remove any @ or # characters
-            string cleanedJsonText = Regex.Replace(rawJsonText, "(?<=\")(@)(?!.*\":\\s )", string.Empty, RegexOptions.IgnoreCase);
-            cleanedJsonText = Regex.Replace(cleanedJsonText, "(?<=\")(#)(?!.*\":\\s )", string.Empty, RegexOptions.IgnoreCase);
-
-            // make sure numbers and booleans do not have extra quotes around them
-            cleanedJsonText = Regex.Replace(cleanedJsonText, "\\\"([\\d\\.]+)\\\"", "$1", RegexOptions.IgnoreCase);
-            cleanedJsonText = Regex.Replace(cleanedJsonText, "\\\"(true|false)\\\"", "$1", RegexOptions.IgnoreCase);
-            
-            return cleanedJsonText;
+                       
+            return rawJsonText;
         }
 
         public static XmlDocument ConvertToXML(string json)
